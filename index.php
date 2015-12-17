@@ -37,7 +37,7 @@ if (!empty($_SESSION['shortenedURL'])){
 
         <div class="header-container">
             <header class="wrapper clearfix">
-                <h1 class="title">ikli - Link Shortener</h1>
+                <h1 class="title">ikLi - Link Shortener</h1>
             </header>
         </div>
 
@@ -48,7 +48,7 @@ if (!empty($_SESSION['shortenedURL'])){
                     <header>
                         <h1>Paste your URL here:</h1>
                         <form action="submit.php" method="post">
-                            <input type="text" name="url" size="60" />
+                            <input type="text" name="url" size="60" placeholder="http://example.com" />
                             <input type="submit" value="Shorten">
                         </form>
                     </header>

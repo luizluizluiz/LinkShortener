@@ -1,16 +1,3 @@
-<?php
-//Start the session
-
-//Access your POST variables
-if (!empty($_SESSION['shortenedURL'])){
-    $shortened = $_SESSION['shortenedURL'];
-    $longURL = $_SESSION['longURL'];
-    //Unset the useless session variable
-    unset($_SESSION['shortenedURL']);
-    unset($_SESSION['longURL']);
-}
-
-?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -51,7 +38,8 @@ if (!empty($_SESSION['shortenedURL'])){
                         </form>
                     </header>
                     <footer>
-                        <?php include 'shortened.php' ?>
+                        
+                        
                     </footer>
                 </article>
 

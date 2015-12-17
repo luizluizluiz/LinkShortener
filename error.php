@@ -1,13 +1,23 @@
 <?php
-//Start the session
+$errorCode = "";
+$errorMsg = "";
 
-//Access your POST variables
-if (!empty($_SESSION['shortenedURL'])){
-    $shortened = $_SESSION['shortenedURL'];
-    $longURL = $_SESSION['longURL'];
-    //Unset the useless session variable
-    unset($_SESSION['shortenedURL']);
-    unset($_SESSION['longURL']);
+if (!empty($_GET['errorCode'])){
+
+    // Handle Error Messages
+    $errorCode = $_GET['errorCode'];
+
+    if(strcmp($errorCode,'No_URL')==0){
+        $errorMsg = "Please input URL.";
+    }
+
+    if(strcmp($errorCode,'Invalid_URL')==0){
+        $errorMsg = "Please input a valid URL.";
+    }
+
+    if(strcmp($errorCode,'NOTEXIST_URL')==0){
+        $errorMsg = "The URL is not found. Kindly check if its available first.";
+    }
 }
 
 ?>
@@ -35,7 +45,7 @@ if (!empty($_SESSION['shortenedURL'])){
 
         <div class="header-container">
             <header class="wrapper clearfix">
-                <h1 class="title">ikli - Link Shortener</h1>
+                <h1 class="title">ikLi - Link Shortener</h1>
             </header>
         </div>
 
@@ -51,7 +61,10 @@ if (!empty($_SESSION['shortenedURL'])){
                         </form>
                     </header>
                     <footer>
-                        <?php include 'shortened.php' ?>
+                        <?php 
+                        echo "<h1 style='color:#e74c3c;'> Oops!</h1>"; 
+                        echo "<h3>" . $errorMsg . "</h3>";
+                        ?>
                     </footer>
                 </article>
 

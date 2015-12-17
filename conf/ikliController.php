@@ -136,4 +136,42 @@ class ikliController
         $result = $stmt->fetch();
         return (empty($result)) ? false : $result["SHORT_URL"];
     }
+
+    public function resolveShortCode($code, $increment = true) {
+        if (empty($code)) {
+            throw new \Exception("No short code was supplied.");
+        }
+
+        if ($this->validateShortCode($code) == false) {
+            throw new \Exception(
+                "Short code does not have a valid format.");
+        }
+
+        $urlRow = $this->getUrlInDb($code);
+        if (empty($urlRow)) {
+            throw new \Exception(
+                "Short code does not appear to exist.");
+        }
+
+        return $urlRow["LONG_URL"];
+    }
+
+    protected function validateShortCode($code) {
+        return preg_match("|[" . self::$chars . "]+|", $code);
+    }
+
+    protected function getUrlInDb($code) {
+        $query = "SELECT UID, LONG_URL FROM " . URL_TABLE .
+            " WHERE SHORT_URL = :short_code LIMIT 1";
+        $stmt = $this->pdo->prepare($query);
+        $params=array(
+            "short_code" => $code
+        );
+        $stmt->execute($params);  
+
+        $result = $stmt->fetch();
+        return (empty($result)) ? false : $result;
+    }
+
+
 }

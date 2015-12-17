@@ -1,9 +1,9 @@
 <?php
-require_once "conf/dbcon.php";
+require_once "conf/props.php";
 require_once "conf/ikliController.php";
 error_reporting(0); // turn off notice in casting indexes when creating short URLs.
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header("Location: result.html?code=InvalidMethod");
+    header("Location: error.php?code=InvalidMethod");
     exit;
 } 
 
@@ -30,6 +30,6 @@ try {
     }
 }
 catch (\Exception $e) {
-    header("Location: error.html?errorCode=" . htmlentities($e->getMessage()));
+    header("Location: error.php?errorCode=" . htmlentities($e->getMessage()));
     exit;
 }
