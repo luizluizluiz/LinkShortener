@@ -70,18 +70,18 @@ body {
    =================== */
 
 .header-container {
-    border-bottom: 20px solid #e44d26;
+    border-bottom: 20px solid #2980b9;
 }
 
 .footer-container,
 .main aside {
-    border-top: 20px solid #e44d26;
+    border-top: 20px solid #2980b9;
 }
 
 .header-container,
 .footer-container,
 .main aside {
-    background: #f16529;
+    background: #3f9ddd;
 }
 
 .title {
